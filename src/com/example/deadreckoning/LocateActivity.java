@@ -57,8 +57,6 @@ public class LocateActivity extends Activity implements SensorEventListener {
 	private TTSHandler tts;
 	public static String direction;
 	
-	private TTSHandler tts;
-	
 	//Location location;
 	//TextView latitude;
 	//TextView longitude;
