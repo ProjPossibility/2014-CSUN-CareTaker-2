@@ -143,23 +143,23 @@ public class LocateActivity extends Activity implements SensorEventListener {
 					try{
 						
 						if (MainActivity.server != null ) {
-							if (!tvDirection.getText().toString().equals("You are heading: " + "EAST")) {
+							if (!tvDirection.getText().toString().equals("You are heading: " + "east")) {
 								tts.shutUp();
-								tts.speakPhrase(tvDirection.getText().toString() + " .FACE EAST");
+								tts.speakPhrase(tvDirection.getText().toString() + " .face east");
 							}
 							else {
 								tts.shutUp();
-								tts.speakPhrase(tvDirection.getText().toString() + "WALK FORWARD");
+								tts.speakPhrase(tvDirection.getText().toString() + "walk forward");
 							}
 						}
-						else {
-							if (!tvDirection.getText().toString().equals("You are heading: " + "WEST")) {
+						else if (MainActivity.client != null){
+							if (!tvDirection.getText().toString().equals("You are heading: " + "west")) {
 								tts.shutUp();
-								tts.speakPhrase(tvDirection.getText().toString() + " .FACE WEST");
+								tts.speakPhrase(tvDirection.getText().toString() + " .face west");
 							}
 							else {
 								tts.shutUp();
-								tts.speakPhrase(tvDirection.getText().toString() + "WALK FORWARD");
+								tts.speakPhrase(tvDirection.getText().toString() + "walk forward");
 							}
 						}
 						
@@ -293,35 +293,35 @@ public class LocateActivity extends Activity implements SensorEventListener {
 			if((degree  + (45 / 2)) / 45 <= 1)
 	        {
 				
-	            tvDirection.setText("You are heading: " + "NORTH");
+	            tvDirection.setText("You are heading: " + "north");
 	        }
 	        else if((degree + (45 / 2))  / 45 <= 2)
 	        {
-	            tvDirection.setText("You are heading: " + "NORTH EAST");
+	            tvDirection.setText("You are heading: " + "north east");
 	        }
 	        else if((degree + (45 / 2))  / 45 <= 3)
 	        {
-	            tvDirection.setText("You are heading: " + "EAST");
+	            tvDirection.setText("You are heading: " + "east");
 	        }
 	        else if((degree + (45 / 2))  / 45 <= 4)
 	        {
-	            tvDirection.setText("You are heading: " + "SOUTH EAST");
+	            tvDirection.setText("You are heading: " + "south east");
 	        }
 	        else if((degree + (45 / 2))  / 45 <= 5)
 	        {
-	            tvDirection.setText("You are heading: " + "SOUTH");
+	            tvDirection.setText("You are heading: " + "south");
 	        }
 	        else if((degree + (45 / 2))  / 45 <= 6)
 	        {
-	            tvDirection.setText("You are heading: " + "SOUTH WEST");
+	            tvDirection.setText("You are heading: " + "south west");
 	        }
 	        else if((degree + (45 / 2))  / 45 <= 7)
 	        {
-	            tvDirection.setText("You are heading: " + "WEST");
+	            tvDirection.setText("You are heading: " + "west");
 	        }
 	        else if((degree + (45 / 2))  / 45 <= 8)
 	        {
-	            tvDirection.setText("You are heading: " + "NORTH WEST");
+	            tvDirection.setText("You are heading: " + "north west");
 	        }
 			
 			

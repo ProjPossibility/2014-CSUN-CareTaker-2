@@ -8,21 +8,38 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 import Handlers.TTSHandler;
 
 public class HelpActivity extends Activity {
 	
 	private Button buttonReturn; 
 	private TTSHandler tts;
-	
+	private TextView helpText;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) { 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_help);
 		
 		buttonReturn = (Button)findViewById(R.id.button4);
-		
+		helpText = (TextView)findViewById(R.id.textViewHelp);
 		tts = new TTSHandler(this);
+		
+		Thread speechTimer = new Thread() {
+			public void run() {
+					try{
+						sleep(1000);
+						tts.speakPhrase(helpText.getText().toString());
+					}  
+					catch(Exception e){
+						e.printStackTrace();
+					}
+					finally{
+						
+					}
+			}
+		};
+		speechTimer.start();
 		
 		buttonReturn.setOnClickListener(new OnClickListener()
 		{

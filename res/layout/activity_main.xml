@@ -33,7 +33,7 @@
         android:layout_height="145dp"
         android:layout_alignLeft="@+id/button3"
         android:layout_centerVertical="true"
-        android:text="Look For Server"
+        android:text="Act As Host"
         android:textSize="36dp" />
 
     <Button
@@ -42,7 +42,7 @@
         android:layout_height="145dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="Look For Client"
+        android:text="Connect To Host"
         android:textSize="36dp" />
 
 </RelativeLayout>
