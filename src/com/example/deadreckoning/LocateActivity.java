@@ -36,6 +36,8 @@ import android.content.Context;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -47,9 +49,12 @@ public class LocateActivity extends Activity implements SensorEventListener {
 	TextView axText;
 	TextView ayText;
 	TextView azText;
+	Button finishButton;
+	
 	
 	TextView directionText;
 	TextView tvDirection;
+	private TTSHandler tts;
 	public static String direction;
 	
 	private TTSHandler tts;
@@ -120,21 +125,37 @@ public class LocateActivity extends Activity implements SensorEventListener {
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_location);
+		tts = new TTSHandler(this);
 		
 		
 		
 		axText = (TextView) findViewById(R.id.ax);
 		ayText = (TextView) findViewById(R.id.ay);
 		azText = (TextView) findViewById(R.id.az);
-		
+		finishButton = (Button) findViewById(R.id.finish);
 		directionText = (TextView) findViewById(R.id.direction);
 		tvDirection = (TextView) findViewById(R.id.compassDirection);
 		
 		sensorManager=(SensorManager) getSystemService(SENSOR_SERVICE);
         sensorManager.registerListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
         sensorManager.registerListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION), SensorManager.SENSOR_DELAY_GAME);
-        
         tts = new TTSHandler(this);
+        
+        finishButton.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				tts.speakPhrase("done".toString());
+				while(tts.isSpeaking()){
+				
+				}
+				tts.shutDownTTS();
+				finish();
+				
+			}
+		});
+
 		
         
         Thread speechTimer = new Thread() {
